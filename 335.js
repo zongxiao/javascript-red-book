@@ -168,11 +168,63 @@ console.log(-12/0);// -Infinity
 //如果有不是数值的操作数，则先在后台用Number()函数将其转换为数值，然后再应用上述规则。
 
 //取模（余数）操作符 （%）
-console.log(26 % 5);// 1
+console.log(26 % 5); // 1
 //如果被除数是有限值，除数是无限值，则返回被除数。
-console.log(25 % Infinity);//25
+console.log(25 % Infinity); //25
+//如果被除数是无限值，除数是有限值，则返回NaN
+console.log(Infinity % 25); // NaN
+//如果是Infinity除以Infinity，则返回NaN
+console.log(Infinity % Infinity); //NaN
+
+//指数操作符（**） ES7新增，与Math.pow()效果一样
+console.log(3 ** 2); //9
+console.log(Math.pow(3, 2)); //9
+console.log(16 ** 0.5); //4
+//不仅如此，指数操作符也有自己的指数赋值操作符**=，该操作符执行指数运算和结果的赋值操作：
+let squared = 3;
+squared **= 3;
+console.log(squared); //27  3的3次方
+
+// 加性操作符
+//如果有任一操作数是NaN，则返回NaN；
+console.log(1 + NaN); //NaN
+console.log(Infinity + Infinity); //Infinity
+console.log(-Infinity + -Infinity); //-Infinity
+console.log(Infinity - Infinity); //NaN
+console.log(-0 + -0); //-0
+console.log(0 === -0); //true
+
+// 如果有一个操作数是字符串,则都转为字符串
+let result1 = 5 + 5;
+console.log(result1); //10
+let result2 = 5 + "5";
+console.log(result2); //55
+// 如果是加号操作符，有任意一个是对象数值或者布尔值，就会调用toString()方法获取字符串
+let objdqw = {
+  toString() {
+    return typeof this.values
+  },
+  values: 1 
+};
+console.log(objdqw.toString())
+console.log(2 + objdqw); 
+
+//减法操作符
+// 如果有任意一个操作数是对象，则调用valueOf()
+let obj12 = {
+  valueOf() {
+    return 100
+  },
+  value: 10,
+}
+let result12 = 2 - obj12;
+console.log(obj12.value);
+console.log(result12);
 
 
 
-
-
+//关系操作符 (<、>、<=、>=)
+//如果操作数都是数值，则执行数值比较。
+//如果操作数都是字符串，则逐个比较字符串中对应字符的编码
+//如果有任一操作数是数值，则将另一个操作数转换为数值，执行数值比较
+console.log(66 >= "50");
