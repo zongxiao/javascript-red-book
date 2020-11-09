@@ -75,7 +75,7 @@ let huonum = 25 | 3;
 console.log(huonum);// 27
 
 
-// 按位异或 ^  两位都是1或者两位都是0 则返回0，其余返回1
+// 按位异或 ^  两位都是1或者两位都是0 则返回0，其余返回1，同为假 异为真
 let yihuonum = 25 ^ 3;
 //25  00011001
 //3   00000011
@@ -83,7 +83,7 @@ let yihuonum = 25 ^ 3;
 console.log(yihuonum);// 26
 
 
-// 左移 << 按照指定的位数将数值的所有位向左移动,后面用0补齐。
+// 有符号左移 << 按照指定的位数将数值的所有位向左移动,后面用0补齐。
 let zynum = 2;
 let zynewnum = zynum << 5;
 // 00000010 << 5 = 01000000
@@ -137,6 +137,7 @@ console.log(result);
 let resulthuo = (found || someUndeclaredVariable)
 console.log(resulthuo);// 逻辑或 只要第一个是true 就不会执行后面的内容，利用这个行为，可以避免给变量赋值null或者undefined
 
+// 逻辑或 || 防止赋上null  这种模式在ECMAScript代码中经常用于变量赋值
 let preferredObject = null;
 let backupObject = {
   "name":"1"
@@ -144,6 +145,32 @@ let backupObject = {
 let myObject = preferredObject || backupObject;
 console.log(myObject);
 
+//乘法操作符 (*)
+//如果有任一操作数是NaN，则返回NaN。
+console.log(10 * NaN); // NaN
+//Infinity乘以0 则返回NaN
+console.log(Infinity * 0);// NaN
+//Infinity乘非0，要么得到Infinity要么得到-Infinity
+console.log(Infinity * -2);// -Infinity
+//如果是Infinity乘以Infinity，则返回Infinity。
+console.log(Infinity * Infinity);// Infinity
+
+//除法操作符 (/)
+console.log(5/2);//2.5
+//如果有任一操作数是NaN 则返回NaN
+console.log("abc"/2);// NaN
+//Infinity除Infinity，返回NaN
+console.log(Infinity/Infinity);// NaN
+//0除以0返回NaN
+console.log(0/0);// NaN
+//非0除以0，返回Infinity或者-Infinity
+console.log(-12/0);// -Infinity
+//如果有不是数值的操作数，则先在后台用Number()函数将其转换为数值，然后再应用上述规则。
+
+//取模（余数）操作符 （%）
+console.log(26 % 5);// 1
+//如果被除数是有限值，除数是无限值，则返回被除数。
+console.log(25 % Infinity);//25
 
 
 
