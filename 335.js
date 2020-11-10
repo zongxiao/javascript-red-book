@@ -1,3 +1,5 @@
+const { Console } = require("console");
+
 console.log("-----操作符------");
 
 // 一元操作符
@@ -206,8 +208,8 @@ let objdqw = {
   },
   values: 1 
 };
-console.log(objdqw.toString())
-console.log(2 + objdqw); 
+console.log(objdqw.toString()) //number
+console.log(2 + objdqw); //2number
 
 //减法操作符
 // 如果有任意一个操作数是对象，则调用valueOf()
@@ -217,9 +219,8 @@ let obj12 = {
   },
   value: 10,
 }
-let result12 = 2 - obj12;
-console.log(obj12.value);
-console.log(result12);
+console.log(obj12.value); //10
+console.log(2 - obj12); //-98
 
 
 
@@ -227,4 +228,69 @@ console.log(result12);
 //如果操作数都是数值，则执行数值比较。
 //如果操作数都是字符串，则逐个比较字符串中对应字符的编码
 //如果有任一操作数是数值，则将另一个操作数转换为数值，执行数值比较
-console.log(66 >= "50");
+console.log(66 >= "67"); //false
+//大写字母的编码都小于小写字母的编码
+let asdjw = "Brick" < "alphabet"; //true
+let acnjs = "Brick".toLowerCase() < "alphabet".toLowerCase() //false
+//两个数值字符串比较，会逐个比较他们的编码，但是如果有一个操作数是数值，那么就会按照数字的整体去比较了
+console.log("23" < "3"); //true
+console.log("23" < 3); //false
+//所有关系操作符涉及到NaN都是返回false，下面的"a"会被转化为NaN
+console.log("a" < 3); //false
+console.log("a" >= 3); //false
+
+
+//相等操作符（== != === !==）,等于和不等于比较之前执行类型转换，全等和不全等比较之前不执行转换
+// 任一操作数是布尔值时，则将布尔值转为数值，false转为0，true转为1，2 == 1 显然不对
+console.log(1 + 1 == true); //false
+// 字符串和数值比较，先将字符串转成数值，再比较
+console.log("1" == 1); //true
+// 如果一个操作数是对象，另一个不是，就先调用对象的valueOf()方法取的原始值，再根据前面的规则进行比较
+let obj1d14 = {
+}
+let obj1d13 = {
+  valueOf() {
+    return "1"
+  }
+}
+console.log(obj1d14.valueOf());// "{}"
+console.log(obj1d14 == 1); //false  因为（"{}" == 1） 相当于NaN == 1  也就是false
+console.log(obj1d13 == 1); //true  因为执行==时候，对象会调用valueOf()方法，取得字符串1，字符串和数值1比较，会把字符串转成数值
+
+//null 和 undefined 相等 但是不全等
+console.log(null == undefined); //true
+
+//如果有任一操作数是NaN，则相等操作符返回false，不相等操作符返回true。记住：即使两个操作数都是NaN，相等操作符也返回false，因为按照规则，NaN不等于NaN
+console.log(NaN == 1); //false
+console.log(NaN == NaN); //false
+
+// 如果2个对象相比，则比较是否为同一个对象，如果不是指向同个对象，就是不相等
+let odsada = {};
+let sadach = {};
+let sdad = sadach;
+console.log(odsada == sadach); //false
+console.log(sdad == sadach); //true 同个对象赋值给不同的变量而已
+
+//null和undefined不能转换为其他类型的值再进行比较。
+console.log(null == 0); //false
+console.log(undefined == 0); //false
+
+
+//全等和不全等
+console.log("55" == 55); //true  转换后相等
+console.log("55" === 55); //false 不全等，因为类型不相等，不会执行转化的
+console.log("55" != 55); //false 字符串的55会转换为数值55，所以相等
+console.log("55" !== 55); //true 不全等，类型已经不全等了，所以返回true
+console.log(undefined === null) //false  类型不相同，所以返回false
+
+// 由于相等和不相等操作符存在类型转换问题，所以推荐用全等或者不全等
+console.log("推荐"==="推荐");
+
+// 条件操作符  ? : ;
+let dasmax = (2 > 1) ? console.log("2>1") : console.log("2 < 1");
+
+let num1 = 2;
+let num2 = 1;
+let max = (num1 > num2) ? num1 : num2;
+console.log(max); //2
+
