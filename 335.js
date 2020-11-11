@@ -294,3 +294,62 @@ let num2 = 1;
 let max = (num1 > num2) ? num1 : num2;
 console.log(max); //2
 
+
+
+console.log("-----------面试题插入---------")
+// 1下面程序的输出
+var x = 21;
+var girl = function() {
+  console.log(x);
+  var x = 20;
+}
+girl(); // undefined
+// 因为var存在变量提升，所以var x被提升到console.log(x)上方
+
+// 2 将data中的数据按照age 从小到大排序
+var data = [
+  { name: 'Jay', age: 10 },
+  { name: 'Jerry', age: 15},
+  { name: 'Merry', age: 12},
+  { name: 'Tom', age: 14},
+  { name: 'Ricx', age: 22},
+  { name: 'luna', age: 11}
+]
+data.sort((a, b) => {
+  return a["age"] - b["age"]
+});
+console.log(data); //排序完成
+
+// 3 下面程序的输出
+function foo(something){
+  this.a = something;
+};
+var obj1 = {
+  foo,
+  a: 12
+};
+var obj2 = {};
+obj1.foo(2);
+console.log(obj1.a);// 2
+obj1.foo.call(obj2,3);// call就是把this指向改到第一个参数里面，3是携带的参数
+//相当于执行了 this.a = 3  也就是 obj2.a = 3
+console.log(obj2.a);//3
+var bar = new obj1.foo(4); // new 一个新对象 并不会改动原对象
+console.log(obj1.a)// 2
+console.log(bar.a)// 4
+
+
+// 4 下面会输出什么
+var ddx = 5;
+var ddobj = {
+  ddx: 3,
+  bar: function() {
+    var ddx = 2;
+    setTimeout(() => {
+      console.log(ddx);
+      var ddx = 1;
+      console.log(this.ddx);
+    }, 1000);
+  }
+}
+ddobj.bar();
