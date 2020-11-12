@@ -345,11 +345,13 @@ var ddobj = {
   ddx: 3,
   bar: function() {
     var ddx = 2;
-    setTimeout(() => {
-      console.log(ddx);
+    setTimeout(function() {
       var ddx = 1;
       console.log(this.ddx);
     }, 1000);
   }
 }
-ddobj.bar();
+ddobj.bar(); // undefined
+// 如果把setTimeout里面的function(){}改为箭头函数()=>{}  结果会截然不同，箭头函数里面的this就代表的是调用bar函数的大哥，也就是ddobj，所以返回3
+
+
