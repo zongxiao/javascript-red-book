@@ -111,14 +111,33 @@ console.log(hostDes);
 //上面连续三个变量调用了locations对象 太麻烦了，不如用with () statement;注意下面，会先搜索with语句段里面的局部变量。找不到就以with括号中的对象为基准
 with (locations) {
   let hostname = 2
-  hostName = hostname;
-  hostUrl = url;
-  hostDes = description;
+  hostName = "-"+hostname;
+  hostUrl = "-"+url;
+  hostDes = "-"+description;
 }
 console.log(hostName);
 console.log(hostUrl);
 console.log(hostDes);
-// 2
-// http://www.baidu.com
-// baidu
+// -2
+// -http://www.baidu.com
+// -baidu
 
+
+// 3.6.10 switch 语句
+console.log("-----------3.6.10 switch 语句");
+let adkl = 40;
+switch (adkl) {
+  case 25:
+    console.log("25");
+    break;
+  case 35:
+    console.log("35");
+    break;
+  case 40:
+    console.log("40");
+    break;
+  default:
+    console.log(">40 || <25")
+}
+// 40
+//注意switch语句在比较每个条件的值时会使用全等操作符，因此不会强制转换数据类型（比如，字符串"10"不等于数值10）。
