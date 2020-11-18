@@ -8,7 +8,7 @@ const { type } = require("os");
 // 4.1 原始值与引用值
 console.log("--------4.1 原始值与引用值");
 // 6种原始值: undefined null boolean number string symbol
-// 引用值：保存在内存种的对象 在操作对象时，实际上操作的是对该对象的引用（reference）而非实际的对象本身。
+// 引用值：保存在内存中的对象 在操作对象时，实际上操作的是对该对象的引用（reference）而非实际的对象本身。
 // 动态属性
 // 对于引用值而言，可以随时添加修改和删除其属性和方法
 let person = new Object();
