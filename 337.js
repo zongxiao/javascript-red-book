@@ -2,7 +2,7 @@
 function sayHi(name, message) {
   console.log("Hello " + name + ", " + message);
 }
-sayHi("silence", "I love you!"); // Hello silence, I love you!
+sayHi("silence37", "I love you!"); // Hello silence, I love you!
 
 //ECMAScript中的函数不需要指定是否返回值。任何函数在任何时间都可以使用return语句来返回函数的值，用法是后跟要返回的值
 function sum(num1, num2) {
