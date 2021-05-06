@@ -264,8 +264,3 @@
         return Math.min(...maxDuLengthArr) + 1;
     };
 }
-
-
-{
-    
-}
